@@ -1,90 +1,96 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>jiayi</title>
-	<meta charset="utf-8">
-	<style type="text/css">
-		.count-down{
-			width: 1000px;
-			height: 500px;
-			text-align: center;
-			margin:auto;
-			margin-top: 200px;
-			position: relative;
-			background: #8e308261;
-		}
-		.numbers{
-			font-size: 300px;
+  <title>jiayi</title>
+  <meta charset="utf-8">
+  <style type="text/css">
+    .count-down{
+      width: 1000px;
+      height: 500px;
+      text-align: center;
+      margin:auto;
+      margin-top: 200px;
+      position: relative;
+      background: #8e308261;
+    }
+    .numbers{
+      font-size: 300px;
       color: #795858;
-		}
-		.btns{
-			font-size: 30px;
+    }
+    .btns{
+      font-size: 30px;
       width: 110px;
       height: 60px;
       border-radius: 16px;
       border: 0;         
       outline: none;
-		}
-		.btns:hover{
-			 border: 1px solid #bf275a;
+    }
+    .btns:hover{
+       border: 1px solid #bf275a;
        background: #b76a6a;
        cursor: pointer;
-		}
-		.times{
-		   width: 120px;
+    }
+    .times{
+       width: 120px;
        height: 120px;
        border-radius: 50%;
        font-size: 30px;
        line-height: 120px;
        background: #4da8f1;
-			 position: absolute;
-			 right: 10px;
-			 top: 10px
-		}
-	</style>
+       position: absolute;
+       right: 10px;
+       top: 10px
+    }
+  </style>
 </head>
 <body>
-	<div class="count-down">
-	   <div id="number" class="numbers">0</div>
+  <div class="count-down">
+     <div id="number" class="numbers">0</div>
      <button id="btn" class="btns">加一</button>
      <div id="time" class="times">60</div>
-	</div>   
+  </div>   
     <script type="text/javascript">
-    	const PAGE = {
-    		   init:function(){
-    			 this.bind();
-    		   },
-    		     bind:function(){
-    			   let btn = document.getElementById('btn');
-    			   btn.addEventListener('click',this.btnplus);
-    		     },
-    		     btnplus: function (){   
-    		         let numbers = document.getElementById('number').innerHTML;
-                 let numbersHtml = Number(numbers);
-                 numbersHtml++;
-                 document.getElementById('number').innerHTML = numbersHtml;
-                 if (numbersHtml === 1) {
-          	         time();
-                 }   		
-                 function time(){
-             	       let time = 10;
-                     let delay = setInterval(function(){
-             	           time--;
-                         document.getElementById('time').innerHTML = time;
-             	           if ( time == 0 ) {
-                             console.log(btn)
-             		             btn.remove();
-             		             clearInterval(delay);
-                             let jiayis = document.getElementById('number').innerHTML
-                             setTimeout(function(){
-                    	           window.alert(jiayis);
-                             },300)             		
-             	           }
-                     },1000)
-                 }              
-    		     }    	
-    	 }
-    	PAGE.init();  
+      const PAGE = {
+        data:{
+          countDownNumber : 60 
+        },
+        init:function(){
+          this.bind();
+        },
+        bind:function(){
+          let btn = document.getElementById('btn');
+          btn.addEventListener('click',this.numberTodo);
+        },
+        numberTodo: function (){   
+          let number = document.getElementById('number');
+          let numberElement = number.innerHTML;
+          let numbersHtml = Number(numberElement);
+          numbersHtml ++;
+          number.innerHTML = numbersHtml;
+          if (numbersHtml === 1) {
+            PAGE.countDown();
+          }      
+        } ,
+        countDown:function(){
+          let number = document.getElementById('number');
+          let btn = document.getElementById('btn');
+          let time = document.getElementById('time');
+          let timeElement = PAGE.data.countDownNumber;
+          let delay = setInterval(function(){
+            timeElement --;
+            time.innerHTML = timeElement;
+            if ( timeElement == 0 ) {
+              btn.remove();
+              clearInterval(delay);
+              let result = number.innerHTML
+              setTimeout(function(){
+                window.alert(result);
+                },300)                 
+            }
+          },1000)
+        }     
+       }
+      PAGE.init();  
     </script>
 </body>
 </html>
