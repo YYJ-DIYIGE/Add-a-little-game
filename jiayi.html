@@ -51,39 +51,39 @@
 	</div>   
     <script type="text/javascript">
     	const PAGE = {
-    		 init:function(){
+    		   init:function(){
     			 this.bind();
-    		 },
-    		 bind:function(){
+    		   },
+    		     bind:function(){
     			   let btn = document.getElementById('btn');
     			   btn.addEventListener('click',this.btnplus);
-    		},
-    		btnplus: function (){   
-    		   let numbers = document.getElementById('number').innerHTML;
-           let numbersHtml = Number(numbers);
-           numbersHtml++;
-           document.getElementById('number').innerHTML = numbersHtml;
-           if (numbersHtml === 1) {
-          	   time();
-           }   		
-           function time(){
-             	 let time = 10;
-               let delay = setInterval(function(){
-             	     time--;
-                   document.getElementById('time').innerHTML = time;
-             	     if ( time == 0 ) {
-                       console.log(btn)
-             		       btn.remove();
-             		       clearInterval(delay);
-                       let jiayis = document.getElementById('number').innerHTML
-                       setTimeout(function(){
-                    	     window.alert(jiayis);
-                       },300)             		
-             	      }
-                },1000)
-           }              
-    		}    	
-    	}
+    		     },
+    		     btnplus: function (){   
+    		         let numbers = document.getElementById('number').innerHTML;
+                 let numbersHtml = Number(numbers);
+                 numbersHtml++;
+                 document.getElementById('number').innerHTML = numbersHtml;
+                 if (numbersHtml === 1) {
+          	         time();
+                 }   		
+                 function time(){
+             	       let time = 10;
+                     let delay = setInterval(function(){
+             	           time--;
+                         document.getElementById('time').innerHTML = time;
+             	           if ( time == 0 ) {
+                             console.log(btn)
+             		             btn.remove();
+             		             clearInterval(delay);
+                             let jiayis = document.getElementById('number').innerHTML
+                             setTimeout(function(){
+                    	           window.alert(jiayis);
+                             },300)             		
+             	           }
+                     },1000)
+                 }              
+    		     }    	
+    	 }
     	PAGE.init();  
     </script>
 </body>
